@@ -2,26 +2,26 @@ Promises for Swift
 
 # Examples
 
-## Creating a deferred object and returning its promise 
+## Creating a promise object and returning its future 
 
 ```swift
-let deferred = Deferred<String>()
-return deferred.promise
+let promise = Promise<String>()
+return promise.future
 ```
 
-## Adding callback to the promise
+## Adding callback to the future
 
 ```swift
-promise.onSuccess() { (value) in
+future.onSuccess() { (value) in
     ... do Stuff
     println(v)
 }
 
-promise.onFailure() { (error) in
+future.onFailure() { (error) in
     ... handle error
 }
 
-promise.onComplete() { (value) in
+future.onComplete() { (value) in
     switch (value) {
     case .Success(let wrapper):
         # call wrapper.value to get actual value
@@ -34,10 +34,10 @@ promise.onComplete() { (value) in
 }
 ```
 
-## Chaining promises
+## Chaining futures
 
 ```swift
-let mappedPromise = promise.map() { (v) -> FailableOf<String> in
+let mappedFuture = future.map() { (v) -> FailableOf<String> in
     switch (v) {
     case .Success(let wrapper):
         let newValue = f(wrapper.value)
@@ -49,8 +49,8 @@ let mappedPromise = promise.map() { (v) -> FailableOf<String> in
     }
 }
 
-mappedPromise.onSuccess() { (value) in
-    # value will be result of original promise passed
+mappedFuture.onSuccess() { (value) in
+    # value will be result of original future passed
     # through mapped promise function
 }
 ```
@@ -58,14 +58,14 @@ mappedPromise.onSuccess() { (value) in
 ## Resolving a promise
 
 ```swift
-deferred.resolve("VALUE")
+promise.resolve("VALUE")
 ```
 
 ## Rejecting a promise
 
 ```swift
 let someError = NSError(...)
-[deferred reject:someError];
+promise.reject(someError);
 ```
 
 ## Author
