@@ -1,4 +1,5 @@
 Promises for Swift
+(loosely inspired by Scala futures)
 
 # Examples
 
