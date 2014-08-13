@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		AE3C0080199B99A500DAC808 /* KSPromise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */; };
 		AE8EA931199B93B1000D4B8C /* KSPromise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */; };
-		AE8EA966199B9465000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Promise.swift */; };
-		AE8EA967199B9465000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Promise.swift */; };
+		AE8EA966199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
+		AE8EA967199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA96E199B957D000D4B8C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Failable.swift */; };
 		AE8EA96F199B957D000D4B8C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Failable.swift */; };
-		AE8EA973199B96BC000D4B8C /* Deferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Deferred.swift */; };
-		AE8EA974199B96BC000D4B8C /* Deferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Deferred.swift */; };
+		AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
+		AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +25,10 @@
 		AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSPromise_Tests.swift; sourceTree = "<group>"; };
 		AE8EA93F199B93BA000D4B8C /* KSPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA949199B93BB000D4B8C /* KSPromise_OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSPromise_OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE8EA965199B9465000D4B8C /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		AE8EA965199B9465000D4B8C /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		AE8EA96B199B957D000D4B8C /* Failable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
 		AE8EA971199B966A000D4B8C /* KSPromise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSPromise.h; sourceTree = "<group>"; };
-		AE8EA972199B96BC000D4B8C /* Deferred.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deferred.swift; sourceTree = "<group>"; };
+		AE8EA972199B96BC000D4B8C /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +113,9 @@
 			children = (
 				AE3C0081199B9B1500DAC808 /* Supporting Files */,
 				AE8EA96B199B957D000D4B8C /* Failable.swift */,
-				AE8EA965199B9465000D4B8C /* Promise.swift */,
+				AE8EA965199B9465000D4B8C /* Future.swift */,
 				AE8EA971199B966A000D4B8C /* KSPromise.h */,
-				AE8EA972199B96BC000D4B8C /* Deferred.swift */,
+				AE8EA972199B96BC000D4B8C /* Promise.swift */,
 			);
 			path = KSPromise;
 			sourceTree = "<group>";
@@ -290,8 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8EA96E199B957D000D4B8C /* Failable.swift in Sources */,
-				AE8EA973199B96BC000D4B8C /* Deferred.swift in Sources */,
-				AE8EA966199B9465000D4B8C /* Promise.swift in Sources */,
+				AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */,
+				AE8EA966199B9465000D4B8C /* Future.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8EA96F199B957D000D4B8C /* Failable.swift in Sources */,
-				AE8EA974199B96BC000D4B8C /* Deferred.swift in Sources */,
-				AE8EA967199B9465000D4B8C /* Promise.swift in Sources */,
+				AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */,
+				AE8EA967199B9465000D4B8C /* Future.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

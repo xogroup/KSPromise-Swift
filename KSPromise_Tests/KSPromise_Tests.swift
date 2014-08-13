@@ -2,14 +2,14 @@ import XCTest
 import KSPromise
 
 class KSPromise_iOSTests: XCTestCase {
-    let deferred = Deferred<String>()
+    let promise = Promise<String>()
     
     func test_onSuccess_whenAlreadyResolved_callsCallback() {
-        deferred.resolve("A")
+        promise.resolve("A")
         
         var done = false
         
-        deferred.promise.onSuccess() { (v) in
+        promise.future.onSuccess() { (v) in
             done = true
             XCTAssertEqual("A", v, "value passed to success is incorrect")
         }
@@ -20,23 +20,23 @@ class KSPromise_iOSTests: XCTestCase {
     func test_onSuccess_whenResolved_callsCallback() {
         var done = false
         
-        deferred.promise.onSuccess() { (v) in
+        promise.future.onSuccess() { (v) in
             done = true
             XCTAssertEqual("A", v, "value passed to success is incorrect")
         }
         
-        deferred.resolve("A")
+        promise.resolve("A")
         
         XCTAssert(done, "callback not called")
     }
     
     func test_onFailure_whenAlreadyRejected_callsCallback() {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
-        deferred.reject(error)
+        promise.reject(error)
         
         var done = false
         
-        deferred.promise.onFailure() { (e) in
+        promise.future.onFailure() { (e) in
             done = true
             XCTAssertEqual(error, e, "error passed to failure is incorrect")
         }
@@ -48,22 +48,22 @@ class KSPromise_iOSTests: XCTestCase {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
         var done = false
         
-        deferred.promise.onFailure() { (e) in
+        promise.future.onFailure() { (e) in
             done = true
             XCTAssertEqual(error, e, "error passed to failure is incorrect")
         }
         
-        deferred.reject(error)
+        promise.reject(error)
         
         XCTAssert(done, "callback not called")
     }
     
     func test_onComplete_whenAlreadyResolved_withValue_callsCallback() {
-        deferred.resolve("A")
+        promise.resolve("A")
         
         var done = false
         
-        deferred.promise.onComplete() { (v) in
+        promise.future.onComplete() { (v) in
             done = true
             switch (v) {
             case .Success(let wrapper):
@@ -79,7 +79,7 @@ class KSPromise_iOSTests: XCTestCase {
     func test_onComplete_whenResolved_withValue_callsCallback() {
         var done = false
         
-        deferred.promise.onComplete() { (v) in
+        promise.future.onComplete() { (v) in
             done = true
             switch (v) {
             case .Success(let wrapper):
@@ -89,18 +89,18 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        deferred.resolve("A")
+        promise.resolve("A")
         
         XCTAssert(done, "callback not called")
     }
     
     func test_onComplete_whenAlreadyResolved_withError_callsCallback() {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
-        deferred.reject(error)
+        promise.reject(error)
         
         var done = false
         
-        deferred.promise.onComplete() { (v) in
+        promise.future.onComplete() { (v) in
             done = true
             switch (v) {
             case .Failure(let e):
@@ -117,7 +117,7 @@ class KSPromise_iOSTests: XCTestCase {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
         var done = false
         
-        deferred.promise.onComplete() { (v) in
+        promise.future.onComplete() { (v) in
             done = true
             
             switch(v) {
@@ -128,16 +128,16 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        deferred.reject(error)
+        promise.reject(error)
         
         XCTAssert(done, "callback not called")
     }
     
     func test_map_whenAlreadyResolved_withValue_mapsValue() {
-        deferred.resolve("A");
+        promise.resolve("A");
         var done = false
         
-        let mappedPromise = deferred.promise.map() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (v) -> FailableOf<String> in
             switch (v) {
             case .Success(let wrapper):
                 return FailableOf<String>(wrapper.value + "B")
@@ -146,7 +146,7 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        mappedPromise.onSuccess() { (v) in
+        mappedFuture.onSuccess() { (v) in
             done = true
             XCTAssertEqual("AB", v, "value passed to success is incorrect")
         }
@@ -157,7 +157,7 @@ class KSPromise_iOSTests: XCTestCase {
     func test_map_whenResolved_withValue_mapsValue() {
         var done = false
         
-        let mappedPromise = deferred.promise.map() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (v) -> FailableOf<String> in
             switch (v) {
             case .Success(let wrapper):
                 return FailableOf<String>(wrapper.value + "B")
@@ -166,12 +166,12 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        mappedPromise.onSuccess() { (v) in
+        mappedFuture.onSuccess() { (v) in
             done = true
             XCTAssertEqual("AB", v, "value passed to success is incorrect")
         }
 
-        deferred.resolve("A");
+        promise.resolve("A");
         
         XCTAssert(done, "callback not called")
     }
@@ -179,7 +179,7 @@ class KSPromise_iOSTests: XCTestCase {
     func test_map_whenResolved_withValue_returnError_whenMapFunctionReturnsError() {
         var done = false
         
-        let mappedPromise = deferred.promise.map() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (v) -> FailableOf<String> in
             switch (v) {
             case .Success(let wrapper):
                 let myError = NSError(domain: "Error After: " + wrapper.value, code: 123, userInfo: nil)
@@ -189,22 +189,22 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        mappedPromise.onFailure() { (v) in
+        mappedFuture.onFailure() { (v) in
             done = true
             XCTAssertEqual("Error After: A", v.domain!, "value passed to failure is incorrect")
         }
         
-        deferred.resolve("A");
+        promise.resolve("A");
         
         XCTAssert(done, "callback not called")
     }
     
     func test_map_whenAlreadyResolved_withError_mapsError() {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
-        deferred.reject(error);
+        promise.reject(error);
         var done = false
         
-        let mappedPromise = deferred.promise.map() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (v) -> FailableOf<String> in
             switch (v) {
             case .Failure(let e):
                 let myError = NSError(domain: "Nested Error: " + e.domain!, code: 123, userInfo: nil)
@@ -214,7 +214,7 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        mappedPromise.onFailure() { (v) in
+        mappedFuture.onFailure() { (v) in
             done = true
             XCTAssertEqual("Nested Error: Error", v.domain!, "value passed to failure is incorrect")
         }
@@ -224,10 +224,10 @@ class KSPromise_iOSTests: XCTestCase {
     
     func test_map_whenAlreadyResolved_withError_returnsValue_whenMapFunctionReturnsValue() {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
-        deferred.reject(error);
+        promise.reject(error);
         var done = false
         
-        let mappedPromise = deferred.promise.map() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (v) -> FailableOf<String> in
             switch(v) {
             case .Failure(let e):
                 let value = "Recovered From: " + e.domain
@@ -237,7 +237,7 @@ class KSPromise_iOSTests: XCTestCase {
             }
         }
         
-        mappedPromise.onSuccess() { (v) in
+        mappedFuture.onSuccess() { (v) in
             done = true
             XCTAssertEqual("Recovered From: Error", v, "value passed to success is incorrect")
         }

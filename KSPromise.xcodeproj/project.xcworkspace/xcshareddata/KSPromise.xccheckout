@@ -6,24 +6,40 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>0796FB7B-D1E5-488B-AA1F-D18E8985CCCD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KSPromise</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>071DA5BB1F5A0268C94586D99E4EDE6FE24419CE</key>
 		<string>https://github.com/owensd/SwiftLib.git</string>
+		<key>F827509CF9255A958E64D0497525617A0931DF9B</key>
+		<string>github.com:kseebaldt/KSPromise-Swift.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KSPromise.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>071DA5BB1F5A0268C94586D99E4EDE6FE24419CE</key>
-		<string>SwiftLib/</string>
+		<string>../../../SwiftLib</string>
+		<key>F827509CF9255A958E64D0497525617A0931DF9B</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/owensd/SwiftLib.git</string>
+	<string>github.com:kseebaldt/KSPromise-Swift.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>071DA5BB1F5A0268C94586D99E4EDE6FE24419CE</string>
+	<string>F827509CF9255A958E64D0497525617A0931DF9B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F827509CF9255A958E64D0497525617A0931DF9B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KSPromise-Swift</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
