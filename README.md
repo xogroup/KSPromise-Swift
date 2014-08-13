@@ -4,58 +4,69 @@ Promises for Swift
 
 ## Creating a deferred object and returning its promise 
 
-    let deferred = Deferred<String>()
-    return deferred.promise
+```swift
+let deferred = Deferred<String>()
+return deferred.promise
+```
 
 ## Adding callback to the promise
 
-    promise.onSuccess() { (value) in
-        ... do Stuff
-        println(v)
-    }
+```swift
+promise.onSuccess() { (value) in
+    ... do Stuff
+    println(v)
+}
 
-    promise.onFailure() { (error) in
+promise.onFailure() { (error) in
+    ... handle error
+}
+
+promise.onComplete() { (value) in
+    switch (value) {
+    case .Success(let wrapper):
+        # call wrapper.value to get actual value
+        # workaround because Swift can not compile
+        # enums with generic types
+        println(wrapper.value)
+    case .Failue(let error):
         ... handle error
     }
-
-    promise.onComplete() { (value) in
-        switch (value) {
-        case .Success(let wrapper):
-            # call wrapper.value to get actual value
-            # workaround because Swift can not compile
-            # enums with generic types
-            println(wrapper.value)
-        case .Failue(let error):
-            ... handle error
-        }
-    }
-
+}
+```
 
 ## Chaining promises
 
-    let mappedPromise = promise.map() { (v) -> FailableOf<String> in
-        switch (v) {
-        case .Success(let wrapper):
-            let newValue = f(wrapper.value)
-            return FailableOf<String>(newValue)
-        case .Failue(let error):
-            # handle error
-            # or pass through
-            return v
-        }
+```swift
+let mappedPromise = promise.map() { (v) -> FailableOf<String> in
+    switch (v) {
+    case .Success(let wrapper):
+        let newValue = f(wrapper.value)
+        return FailableOf<String>(newValue)
+    case .Failue(let error):
+        # handle error
+        # or pass through
+        return v
     }
+}
 
-    mappedPromise.onSuccess() { (value) in
-        # value will be result of original promise passed
-        # through mapped promise function
-    }
+mappedPromise.onSuccess() { (value) in
+    # value will be result of original promise passed
+    # through mapped promise function
+}
+```
 
 ## Resolving a promise
-    deferred.resolve("VALUE")
+
+```swift
+deferred.resolve("VALUE")
+```
 
 ## Rejecting a promise
-    let someError = NSError(...)
-    [deferred reject:someError];
+
+```swift
+let someError = NSError(...)
+[deferred reject:someError];
+```
 
 ## Author
 
