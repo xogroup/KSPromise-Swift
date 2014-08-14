@@ -3,6 +3,30 @@ Promises for Swift
 
 # Examples
 
+## run a function on the main queue
+
+```swift
+let myResult: Future<String> = future {
+    return "RESULT"    
+}
+
+myResult.onSuccess() { (v) in
+    # do stuff with result
+}
+```
+
+## run a function on another queue
+
+```swift
+let myResult: Future<String> = future(NSOperationQueue.currentQueue) {
+    return "RESULT"    
+}
+
+myResult.onSuccess() { (v) in
+    # do stuff with result
+}
+```
+
 ## Creating a promise object and returning its future 
 
 ```swift
