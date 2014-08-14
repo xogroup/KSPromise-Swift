@@ -2,12 +2,12 @@ import Foundation
 
 public class Future<T> {
     
-    var _value: FailableOf<T>?
+    var _value: Try<T>?
     var _isCompleted = false
     
     var successCallbacks: Array<T -> Void>
     var failureCallbacks: Array<NSError -> Void>
-    var completeCallbacks: Array<FailableOf<T> -> Void>
+    var completeCallbacks: Array<Try<T> -> Void>
     
     public init() {
         successCallbacks = []
@@ -15,7 +15,7 @@ public class Future<T> {
         completeCallbacks = []
     }
     
-    public var value: FailableOf<T>? {
+    public var value: Try<T>? {
         get {
             return _value
         }
@@ -27,7 +27,7 @@ public class Future<T> {
         }
     }
     
-    public func onComplete(callback: (FailableOf<T>) -> Void) {
+    public func onComplete(callback: (Try<T>) -> Void) {
         if isCompleted {
             callback(value!)
         } else {
@@ -65,33 +65,33 @@ public class Future<T> {
         }
     }
     
-    public func map<U>(transform: (T) -> FailableOf<U>) -> Future<U> {
+    public func map<U>(transform: (T) -> Try<U>) -> Future<U> {
         let promise = Future<U>()
         
         onComplete() { (v) in
-            var newValue: FailableOf<U>
+            var newValue: Try<U>
             switch v {
             case .Success(let wrapper):
                 newValue = transform(wrapper.value)
             case .Failure(let error):
-                newValue = FailableOf<U>(error)
+                newValue = Try<U>(error)
             }
             promise.complete(newValue)
         }
         return promise
     }
     
-    public func mapFailable<U>(transform: (FailableOf<T>) -> FailableOf<U>) -> Future<U> {
+    public func mapTry<U>(transform: (Try<T>) -> Try<U>) -> Future<U> {
         let promise = Future<U>()
 
-        onComplete({ (v: FailableOf<T>) -> Void in
+        onComplete({ (v: Try<T>) -> Void in
             let newVal = transform(v)
             promise.complete(newVal)
         })
         return promise
     }
     
-    internal func complete(value: FailableOf<T>) {
+    internal func complete(value: Try<T>) {
         if isCompleted {
             return
         }

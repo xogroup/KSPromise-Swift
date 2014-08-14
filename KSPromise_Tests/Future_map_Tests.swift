@@ -8,8 +8,8 @@ class Future_map_Tests: XCTestCase {
         promise.resolve("A");
         var done = false
         
-        let mappedFuture = promise.future.map() { (value) -> FailableOf<String> in
-            return FailableOf<String>(value + "B")
+        let mappedFuture = promise.future.map() { (value) -> Try<String> in
+            return Try<String>(value + "B")
         }
         
         mappedFuture.onSuccess() { (value) in
@@ -23,8 +23,8 @@ class Future_map_Tests: XCTestCase {
     func test_whenResolved_withValue_mapsValue() {
         var done = false
         
-        let mappedFuture = promise.future.map() { (value) -> FailableOf<String> in
-            return FailableOf<String>(value + "B")
+        let mappedFuture = promise.future.map() { (value) -> Try<String> in
+            return Try<String>(value + "B")
         }
         
         mappedFuture.onSuccess() { (value) in
@@ -40,9 +40,9 @@ class Future_map_Tests: XCTestCase {
     func test_whenResolved_withValue_returnError_whenMapFunctionReturnsError() {
         var done = false
         
-        let mappedFuture = promise.future.map() { (value) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (value) -> Try<String> in
             let myError = NSError(domain: "Error After: " + value, code: 123, userInfo: nil)
-            return FailableOf<String>(myError)
+            return Try<String>(myError)
         }
         
         mappedFuture.onFailure() { (error) in
@@ -60,9 +60,9 @@ class Future_map_Tests: XCTestCase {
         promise.reject(error);
         var done = false
         
-        let mappedFuture = promise.future.map() { (value) -> FailableOf<String> in
+        let mappedFuture = promise.future.map() { (value) -> Try<String> in
             XCTFail("should not be called")
-            return FailableOf<String>("A")
+            return Try<String>("A")
         }
         
         mappedFuture.onFailure() { (error) in

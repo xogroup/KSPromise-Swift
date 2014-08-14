@@ -62,9 +62,9 @@ future.onComplete() { (value) in
 ## Chaining futures
 
 ```swift
-let mappedFuture = future.map() { (v) -> FailableOf<String> in
+let mappedFuture = future.map() { (v) -> Try<String> in
     let newValue = f(wrapper.value)
-    return FailableOf<String>(newValue)
+    return Try<String>(newValue)
 }
 
 mappedFuture.onSuccess() { (value) in

@@ -6,10 +6,10 @@ public class Promise<T> {
     public init() { }
     
     public func resolve(value: T) {
-        future.complete(FailableOf<T>(value))
+        future.complete(Try<T>(value))
     }
     
     public func reject(error: NSError) {
-        future.complete(FailableOf<T>(error))
+        future.complete(Try<T>(error))
     }
 }

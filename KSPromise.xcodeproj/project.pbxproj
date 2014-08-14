@@ -17,16 +17,16 @@
 		AE234F14199CB1C6008287FD /* Future_map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F12199CB1C6008287FD /* Future_map_Tests.swift */; };
 		AE234F16199CB2A0008287FD /* Promise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F15199CB2A0008287FD /* Promise_Tests.swift */; };
 		AE234F17199CB2A0008287FD /* Promise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F15199CB2A0008287FD /* Promise_Tests.swift */; };
-		AE234F19199CBF9D008287FD /* Future_mapFailable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapFailable_Tests.swift */; };
-		AE234F1A199CBF9D008287FD /* Future_mapFailable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapFailable_Tests.swift */; };
+		AE234F19199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */; };
+		AE234F1A199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */; };
 		AE234F1C199CC311008287FD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1B199CC311008287FD /* Functions.swift */; };
 		AE234F1D199CC311008287FD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1B199CC311008287FD /* Functions.swift */; };
 		AE234F1F199CC368008287FD /* Future_function_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_function_Tests.swift */; };
 		AE234F20199CC368008287FD /* Future_function_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_function_Tests.swift */; };
 		AE8EA966199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA967199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
-		AE8EA96E199B957D000D4B8C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Failable.swift */; };
-		AE8EA96F199B957D000D4B8C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Failable.swift */; };
+		AE8EA96E199B957D000D4B8C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Try.swift */; };
+		AE8EA96F199B957D000D4B8C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Try.swift */; };
 		AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
 		AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +37,7 @@
 		AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_onFailure_Tests.swift; sourceTree = "<group>"; };
 		AE234F12199CB1C6008287FD /* Future_map_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_map_Tests.swift; sourceTree = "<group>"; };
 		AE234F15199CB2A0008287FD /* Promise_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise_Tests.swift; sourceTree = "<group>"; };
-		AE234F18199CBF9D008287FD /* Future_mapFailable_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_mapFailable_Tests.swift; sourceTree = "<group>"; };
+		AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_mapTry_Tests.swift; sourceTree = "<group>"; };
 		AE234F1B199CC311008287FD /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		AE234F1E199CC368008287FD /* Future_function_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_function_Tests.swift; sourceTree = "<group>"; };
 		AE3C0082199B9B2000DAC808 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		AE8EA93F199B93BA000D4B8C /* KSPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA949199B93BB000D4B8C /* KSPromise_OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSPromise_OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA965199B9465000D4B8C /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
-		AE8EA96B199B957D000D4B8C /* Failable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
+		AE8EA96B199B957D000D4B8C /* Try.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try.swift; sourceTree = "<group>"; };
 		AE8EA971199B966A000D4B8C /* KSPromise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSPromise.h; sourceTree = "<group>"; };
 		AE8EA972199B96BC000D4B8C /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,7 +121,7 @@
 				AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */,
 				AE234F12199CB1C6008287FD /* Future_map_Tests.swift */,
 				AE234F15199CB2A0008287FD /* Promise_Tests.swift */,
-				AE234F18199CBF9D008287FD /* Future_mapFailable_Tests.swift */,
+				AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */,
 				AE234F1E199CC368008287FD /* Future_function_Tests.swift */,
 			);
 			path = KSPromise_Tests;
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				AE3C0081199B9B1500DAC808 /* Supporting Files */,
-				AE8EA96B199B957D000D4B8C /* Failable.swift */,
+				AE8EA96B199B957D000D4B8C /* Try.swift */,
 				AE8EA965199B9465000D4B8C /* Future.swift */,
 				AE8EA971199B966A000D4B8C /* KSPromise.h */,
 				AE8EA972199B96BC000D4B8C /* Promise.swift */,
@@ -317,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE8EA96E199B957D000D4B8C /* Failable.swift in Sources */,
+				AE8EA96E199B957D000D4B8C /* Try.swift in Sources */,
 				AE234F1C199CC311008287FD /* Functions.swift in Sources */,
 				AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */,
 				AE8EA966199B9465000D4B8C /* Future.swift in Sources */,
@@ -328,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE234F19199CBF9D008287FD /* Future_mapFailable_Tests.swift in Sources */,
+				AE234F19199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */,
 				AE234F10199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
 				AE234F16199CB2A0008287FD /* Promise_Tests.swift in Sources */,
 				AE234F0A199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
@@ -342,7 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE8EA96F199B957D000D4B8C /* Failable.swift in Sources */,
+				AE8EA96F199B957D000D4B8C /* Try.swift in Sources */,
 				AE234F1D199CC311008287FD /* Functions.swift in Sources */,
 				AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */,
 				AE8EA967199B9465000D4B8C /* Future.swift in Sources */,
@@ -353,7 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE234F1A199CBF9D008287FD /* Future_mapFailable_Tests.swift in Sources */,
+				AE234F1A199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */,
 				AE234F11199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
 				AE234F17199CB2A0008287FD /* Promise_Tests.swift in Sources */,
 				AE234F0B199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,

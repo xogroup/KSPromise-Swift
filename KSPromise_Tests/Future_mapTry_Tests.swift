@@ -1,17 +1,17 @@
 import XCTest
 import KSPromise
 
-class Future_mapFailable_Tests: XCTestCase {
+class Future_mapTry_Tests: XCTestCase {
     let promise = Promise<String>()
     
     func test_whenAlreadyResolved_withValue_mapsValue() {
         promise.resolve("A");
         var done = false
         
-        let mappedFuture = promise.future.mapFailable() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
             case .Success(let wrapper):
-                return FailableOf<String>(wrapper.value + "B")
+                return Try<String>(wrapper.value + "B")
             default:
                 return v
             }
@@ -28,10 +28,10 @@ class Future_mapFailable_Tests: XCTestCase {
     func test_whenResolved_withValue_mapsValue() {
         var done = false
         
-        let mappedFuture = promise.future.mapFailable() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
             case .Success(let wrapper):
-                return FailableOf<String>(wrapper.value + "B")
+                return Try<String>(wrapper.value + "B")
             default:
                 return v
             }
@@ -50,11 +50,11 @@ class Future_mapFailable_Tests: XCTestCase {
     func test_whenResolved_withValue_returnError_whenMapFunctionReturnsError() {
         var done = false
         
-        let mappedFuture = promise.future.mapFailable() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
             case .Success(let wrapper):
                 let myError = NSError(domain: "Error After: " + wrapper.value, code: 123, userInfo: nil)
-                return FailableOf<String>(myError)
+                return Try<String>(myError)
             default:
                 return v
             }
@@ -75,11 +75,11 @@ class Future_mapFailable_Tests: XCTestCase {
         promise.reject(error);
         var done = false
         
-        let mappedFuture = promise.future.mapFailable() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
             case .Failure(let e):
                 let myError = NSError(domain: "Nested Error: " + e.domain!, code: 123, userInfo: nil)
-                return FailableOf<String>(myError)
+                return Try<String>(myError)
             default:
                 return v
             }
@@ -98,11 +98,11 @@ class Future_mapFailable_Tests: XCTestCase {
         promise.reject(error);
         var done = false
         
-        let mappedFuture = promise.future.mapFailable() { (v) -> FailableOf<String> in
+        let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch(v) {
             case .Failure(let e):
                 let value = "Recovered From: " + e.domain
-                return FailableOf<String>(value)
+                return Try<String>(value)
             default:
                 return v
             }

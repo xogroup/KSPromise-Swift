@@ -1,11 +1,11 @@
 import Foundation
 
-public enum FailableOf<T> {
-    case Success(FailableValueWrapper<T>)
+public enum Try<T> {
+    case Success(TryValueWrapper<T>)
     case Failure(NSError)
 
     public init(_ value: T) {
-        self = .Success(FailableValueWrapper(value))
+        self = .Success(TryValueWrapper(value))
     }
 
     public init(_ error: NSError) {
@@ -13,8 +13,7 @@ public enum FailableOf<T> {
     }
 }
 
-public class FailableValueWrapper<T> {
+public class TryValueWrapper<T> {
     public let value: T
     public init(_ value: T) { self.value = value }
 }
-
