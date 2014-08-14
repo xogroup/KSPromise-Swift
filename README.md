@@ -7,7 +7,7 @@ Promises for Swift
 
 ```swift
 let myResult: Future<String> = Future() {
-    return "RESULT"    
+    return Try<"RESULT">
 }
 
 myResult.onSuccess() { (v) in
@@ -19,7 +19,7 @@ myResult.onSuccess() { (v) in
 
 ```swift
 let myResult: Future<String> = Future(queue: NSOperationQueue.currentQueue) {
-    return "RESULT"    
+    return Try<"RESULT">
 }
 
 myResult.onSuccess() { (v) in
