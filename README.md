@@ -39,15 +39,8 @@ future.onComplete() { (value) in
 
 ```swift
 let mappedFuture = future.map() { (v) -> FailableOf<String> in
-    switch (v) {
-    case .Success(let wrapper):
-        let newValue = f(wrapper.value)
-        return FailableOf<String>(newValue)
-    case .Failue(let error):
-        # handle error
-        # or pass through
-        return v
-    }
+    let newValue = f(wrapper.value)
+    return FailableOf<String>(newValue)
 }
 
 mappedFuture.onSuccess() { (value) in
@@ -55,6 +48,9 @@ mappedFuture.onSuccess() { (value) in
     # through mapped promise function
 }
 ```
+
+The map function is only called when original promise succeeds.  Errors propagate
+through the map chain.
 
 ## Resolving a promise
 

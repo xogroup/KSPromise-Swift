@@ -9,7 +9,7 @@ public class Future<T> {
     var failureCallbacks: Array<NSError -> Void>
     var completeCallbacks: Array<FailableOf<T> -> Void>
     
-    public init() {
+    internal init() {
         successCallbacks = []
         failureCallbacks = []
         completeCallbacks = []
@@ -65,13 +65,19 @@ public class Future<T> {
         }
     }
     
-    public func map<U>(transform: (FailableOf<T>) -> FailableOf<U>) -> Future<U> {
+    public func map<U>(transform: (T) -> FailableOf<U>) -> Future<U> {
         let promise = Future<U>()
 
-        onComplete({ (v: FailableOf<T>) -> Void in
-            let newVal = transform(v)
-            promise.complete(newVal)
-        })
+        onComplete() { (v) in
+            var newValue: FailableOf<U>
+            switch v {
+            case .Success(let wrapper):
+                newValue = transform(wrapper.value)
+            case .Failure(let error):
+                newValue = FailableOf<U>(error)
+            }
+            promise.complete(newValue)
+        }
         return promise
     }
     
