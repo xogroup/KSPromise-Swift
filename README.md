@@ -3,10 +3,10 @@ Promises for Swift
 
 # Examples
 
-## run a function on the main queue
+## create a Future with a function to run on main queue
 
 ```swift
-let myResult: Future<String> = future {
+let myResult: Future<String> = Future() {
     return "RESULT"    
 }
 
@@ -18,7 +18,7 @@ myResult.onSuccess() { (v) in
 ## run a function on another queue
 
 ```swift
-let myResult: Future<String> = future(NSOperationQueue.currentQueue) {
+let myResult: Future<String> = Future(queue: NSOperationQueue.currentQueue) {
     return "RESULT"    
 }
 

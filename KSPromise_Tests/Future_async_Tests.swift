@@ -1,10 +1,10 @@
 import XCTest
 import KSPromise
 
-class Future_function_Tests: XCTestCase {
+class Future_async_Tests: XCTestCase {
     func test_future_resolvesAFutureFromTheBlock() {
-        let myFuture: Future<String> = future {
-            return "A"
+        let myFuture: Future<String> = Future() {
+            return Try("A")
         }
         
         let expectation = expectationWithDescription("resolveFuture")
@@ -19,8 +19,8 @@ class Future_function_Tests: XCTestCase {
     }
     
     func test_future_withQueue_resolvesAFutureFromTheBlock() {
-        let myFuture: Future<String> = future(NSOperationQueue.mainQueue()) {
-            return "A"
+        let myFuture: Future<String> = Future(queue: NSOperationQueue.mainQueue()) {
+            return Try("A")
         }
         
         let expectation = expectationWithDescription("resolveFuture")

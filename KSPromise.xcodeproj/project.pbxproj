@@ -19,10 +19,8 @@
 		AE234F17199CB2A0008287FD /* Promise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F15199CB2A0008287FD /* Promise_Tests.swift */; };
 		AE234F19199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */; };
 		AE234F1A199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */; };
-		AE234F1C199CC311008287FD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1B199CC311008287FD /* Functions.swift */; };
-		AE234F1D199CC311008287FD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1B199CC311008287FD /* Functions.swift */; };
-		AE234F1F199CC368008287FD /* Future_function_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_function_Tests.swift */; };
-		AE234F20199CC368008287FD /* Future_function_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_function_Tests.swift */; };
+		AE234F1F199CC368008287FD /* Future_async_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_async_Tests.swift */; };
+		AE234F20199CC368008287FD /* Future_async_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F1E199CC368008287FD /* Future_async_Tests.swift */; };
 		AE8EA966199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA967199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA96E199B957D000D4B8C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Try.swift */; };
@@ -38,8 +36,7 @@
 		AE234F12199CB1C6008287FD /* Future_map_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_map_Tests.swift; sourceTree = "<group>"; };
 		AE234F15199CB2A0008287FD /* Promise_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise_Tests.swift; sourceTree = "<group>"; };
 		AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_mapTry_Tests.swift; sourceTree = "<group>"; };
-		AE234F1B199CC311008287FD /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		AE234F1E199CC368008287FD /* Future_function_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_function_Tests.swift; sourceTree = "<group>"; };
+		AE234F1E199CC368008287FD /* Future_async_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_async_Tests.swift; sourceTree = "<group>"; };
 		AE3C0082199B9B2000DAC808 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE8EA921199B93B1000D4B8C /* KSPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA92C199B93B1000D4B8C /* KSPromise_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSPromise_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +119,7 @@
 				AE234F12199CB1C6008287FD /* Future_map_Tests.swift */,
 				AE234F15199CB2A0008287FD /* Promise_Tests.swift */,
 				AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */,
-				AE234F1E199CC368008287FD /* Future_function_Tests.swift */,
+				AE234F1E199CC368008287FD /* Future_async_Tests.swift */,
 			);
 			path = KSPromise_Tests;
 			sourceTree = "<group>";
@@ -143,7 +140,6 @@
 				AE8EA965199B9465000D4B8C /* Future.swift */,
 				AE8EA971199B966A000D4B8C /* KSPromise.h */,
 				AE8EA972199B96BC000D4B8C /* Promise.swift */,
-				AE234F1B199CC311008287FD /* Functions.swift */,
 			);
 			path = KSPromise;
 			sourceTree = "<group>";
@@ -318,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8EA96E199B957D000D4B8C /* Try.swift in Sources */,
-				AE234F1C199CC311008287FD /* Functions.swift in Sources */,
 				AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */,
 				AE8EA966199B9465000D4B8C /* Future.swift in Sources */,
 			);
@@ -334,7 +329,7 @@
 				AE234F0A199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
 				AE234F0D199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
 				AE234F13199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
-				AE234F1F199CC368008287FD /* Future_function_Tests.swift in Sources */,
+				AE234F1F199CC368008287FD /* Future_async_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +338,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8EA96F199B957D000D4B8C /* Try.swift in Sources */,
-				AE234F1D199CC311008287FD /* Functions.swift in Sources */,
 				AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */,
 				AE8EA967199B9465000D4B8C /* Future.swift in Sources */,
 			);
@@ -359,7 +353,7 @@
 				AE234F0B199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
 				AE234F0E199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
 				AE234F14199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
-				AE234F20199CC368008287FD /* Future_function_Tests.swift in Sources */,
+				AE234F20199CC368008287FD /* Future_async_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

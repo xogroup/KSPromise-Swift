@@ -5,14 +5,20 @@ public class Future<T> {
     var _value: Try<T>?
     var _isCompleted = false
     
-    var successCallbacks: Array<T -> Void>
-    var failureCallbacks: Array<NSError -> Void>
-    var completeCallbacks: Array<Try<T> -> Void>
+    var successCallbacks: Array<T -> Void> = []
+    var failureCallbacks: Array<NSError -> Void> = []
+    var completeCallbacks: Array<Try<T> -> Void> = []
     
-    public init() {
-        successCallbacks = []
-        failureCallbacks = []
-        completeCallbacks = []
+    internal init() { }
+    
+    public convenience init(f: () -> Try<T>) {
+        self.init(queue: NSOperationQueue.mainQueue(), f)
+    }
+    
+    public init(queue: NSOperationQueue, f: () -> Try<T>) {
+        queue.addOperationWithBlock() {
+            self.complete(f())
+        }
     }
     
     public var value: Try<T>? {
