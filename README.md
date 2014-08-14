@@ -73,8 +73,17 @@ mappedFuture.onSuccess() { (value) in
 }
 ```
 
-The map function is only called when original promise succeeds.  Errors propagate
-through the map chain.
+```swift
+let mappedFuture = future.flatMap() { (v) -> Try<String> in
+    let future = anotherAsyncCall(v)
+    return future
+}
+
+mappedFuture.onSuccess() { (value) in
+    # value will be result of second future
+    # which received the value from the first future
+}
+```
 
 ## Resolving a promise
 

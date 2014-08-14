@@ -72,29 +72,45 @@ public class Future<T> {
     }
     
     public func map<U>(transform: (T) -> Try<U>) -> Future<U> {
-        let promise = Future<U>()
+        let future = Future<U>()
         
         onComplete() { (v) in
-            var newValue: Try<U>
-            switch v {
-            case .Success(let wrapper):
-                newValue = transform(wrapper.value)
-            case .Failure(let error):
-                newValue = Try<U>(error)
-            }
-            promise.complete(newValue)
+            future.complete(v.flatMap(transform))
         }
-        return promise
+        return future
     }
     
     public func mapTry<U>(transform: (Try<T>) -> Try<U>) -> Future<U> {
         let promise = Future<U>()
-
+        
         onComplete({ (v: Try<T>) -> Void in
-            let newVal = transform(v)
-            promise.complete(newVal)
+            promise.complete(transform(v))
         })
         return promise
+    }
+    
+    public func flatMap<U>(transform: (T) -> Future<U>) -> Future<U> {
+        let future = Future<U>()
+        
+        onComplete() { (v) in
+            let newFuture = self.buildFlatMapFuture(v, transform)
+            newFuture.onComplete() { (v) in
+                future.complete(v)
+            }
+        }
+        return future
+    }
+    
+    public func flatMapTry<U>(transform: (Try<T>) -> Future<U>) -> Future<U> {
+        let future = Future<U>()
+        
+        onComplete() { (v1) in
+            let newFuture = transform(v1)
+            newFuture.onComplete() { (v2) in
+                future.complete(v2)
+            }
+        }
+        return future
     }
     
     internal func complete(value: Try<T>) {
@@ -120,5 +136,16 @@ public class Future<T> {
         successCallbacks.removeAll(keepCapacity: false)
         failureCallbacks.removeAll(keepCapacity: false)
         completeCallbacks.removeAll(keepCapacity: false)
+    }
+    
+    private func buildFlatMapFuture<U>(v: Try<T>, transform: (T) -> Future<U>) -> Future<U> {
+        switch v {
+        case .Success(let wrapper):
+            return transform(wrapper.value)
+        case .Failure(let error):
+            let newFuture = Future<U>()
+            newFuture.complete(Try(error))
+            return newFuture
+        }
     }
 }

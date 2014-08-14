@@ -27,6 +27,12 @@
 		AE8EA96F199B957D000D4B8C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Try.swift */; };
 		AE8EA973199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
 		AE8EA974199B96BC000D4B8C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA972199B96BC000D4B8C /* Promise.swift */; };
+		AECE22B6199CF5ED00E67667 /* Future_flatMap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22B5199CF5ED00E67667 /* Future_flatMap_Tests.swift */; };
+		AECE22B7199CF5ED00E67667 /* Future_flatMap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22B5199CF5ED00E67667 /* Future_flatMap_Tests.swift */; };
+		AECE22B9199CFB1700E67667 /* Try_map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22B8199CFB1700E67667 /* Try_map_Tests.swift */; };
+		AECE22BA199CFB1700E67667 /* Try_map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22B8199CFB1700E67667 /* Try_map_Tests.swift */; };
+		AECE22BC199CFC7300E67667 /* Try_flatMap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22BB199CFC7300E67667 /* Try_flatMap_Tests.swift */; };
+		AECE22BD199CFC7300E67667 /* Try_flatMap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE22BB199CFC7300E67667 /* Try_flatMap_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +53,9 @@
 		AE8EA96B199B957D000D4B8C /* Try.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try.swift; sourceTree = "<group>"; };
 		AE8EA971199B966A000D4B8C /* KSPromise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSPromise.h; sourceTree = "<group>"; };
 		AE8EA972199B96BC000D4B8C /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		AECE22B5199CF5ED00E67667 /* Future_flatMap_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_flatMap_Tests.swift; sourceTree = "<group>"; };
+		AECE22B8199CFB1700E67667 /* Try_map_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try_map_Tests.swift; sourceTree = "<group>"; };
+		AECE22BB199CFC7300E67667 /* Try_flatMap_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try_flatMap_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +129,9 @@
 				AE234F15199CB2A0008287FD /* Promise_Tests.swift */,
 				AE234F18199CBF9D008287FD /* Future_mapTry_Tests.swift */,
 				AE234F1E199CC368008287FD /* Future_async_Tests.swift */,
+				AECE22B5199CF5ED00E67667 /* Future_flatMap_Tests.swift */,
+				AECE22B8199CFB1700E67667 /* Try_map_Tests.swift */,
+				AECE22BB199CFC7300E67667 /* Try_flatMap_Tests.swift */,
 			);
 			path = KSPromise_Tests;
 			sourceTree = "<group>";
@@ -325,10 +337,13 @@
 			files = (
 				AE234F19199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */,
 				AE234F10199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
+				AECE22B9199CFB1700E67667 /* Try_map_Tests.swift in Sources */,
 				AE234F16199CB2A0008287FD /* Promise_Tests.swift in Sources */,
 				AE234F0A199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
+				AECE22BC199CFC7300E67667 /* Try_flatMap_Tests.swift in Sources */,
 				AE234F0D199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
 				AE234F13199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
+				AECE22B6199CF5ED00E67667 /* Future_flatMap_Tests.swift in Sources */,
 				AE234F1F199CC368008287FD /* Future_async_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,10 +364,13 @@
 			files = (
 				AE234F1A199CBF9D008287FD /* Future_mapTry_Tests.swift in Sources */,
 				AE234F11199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
+				AECE22BA199CFB1700E67667 /* Try_map_Tests.swift in Sources */,
 				AE234F17199CB2A0008287FD /* Promise_Tests.swift in Sources */,
 				AE234F0B199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
+				AECE22BD199CFC7300E67667 /* Try_flatMap_Tests.swift in Sources */,
 				AE234F0E199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
 				AE234F14199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
+				AECE22B7199CF5ED00E67667 /* Future_flatMap_Tests.swift in Sources */,
 				AE234F20199CC368008287FD /* Future_async_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
