@@ -2,8 +2,8 @@ import Foundation
 
 public class Future<T> {
     
-    var value: FailableOf<T>?
-    var isCompleted = false
+    var _value: FailableOf<T>?
+    var _isCompleted = false
     
     var successCallbacks: Array<T -> Void>
     var failureCallbacks: Array<NSError -> Void>
@@ -13,6 +13,18 @@ public class Future<T> {
         successCallbacks = []
         failureCallbacks = []
         completeCallbacks = []
+    }
+    
+    public var value: FailableOf<T>? {
+        get {
+            return _value
+        }
+    }
+    
+    public var isCompleted: Bool {
+        get {
+            return _isCompleted
+        }
     }
     
     public func onComplete(callback: (FailableOf<T>) -> Void) {
@@ -64,8 +76,12 @@ public class Future<T> {
     }
     
     internal func complete(value: FailableOf<T>) {
-        self.isCompleted = true
-        self.value = value
+        if isCompleted {
+            return
+        }
+            
+        _isCompleted = true
+        _value = value
         switch (value) {
         case .Success(let wrapper):
             for callback in successCallbacks {
@@ -79,5 +95,8 @@ public class Future<T> {
         for callback in completeCallbacks {
             callback(self.value!)
         }
+        successCallbacks.removeAll(keepCapacity: false)
+        failureCallbacks.removeAll(keepCapacity: false)
+        completeCallbacks.removeAll(keepCapacity: false)
     }
 }
