@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE3C0080199B99A500DAC808 /* KSPromise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */; };
-		AE8EA931199B93B1000D4B8C /* KSPromise_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */; };
+		AE234F0A199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F09199CB0B2008287FD /* Future_onComplete_Tests.swift */; };
+		AE234F0B199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F09199CB0B2008287FD /* Future_onComplete_Tests.swift */; };
+		AE234F0D199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F0C199CB14A008287FD /* Future_onSuccess_Tests.swift */; };
+		AE234F0E199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F0C199CB14A008287FD /* Future_onSuccess_Tests.swift */; };
+		AE234F10199CB189008287FD /* Future_onFailure_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */; };
+		AE234F11199CB189008287FD /* Future_onFailure_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */; };
+		AE234F13199CB1C6008287FD /* Future_map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F12199CB1C6008287FD /* Future_map_Tests.swift */; };
+		AE234F14199CB1C6008287FD /* Future_map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F12199CB1C6008287FD /* Future_map_Tests.swift */; };
 		AE8EA966199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA967199B9465000D4B8C /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA965199B9465000D4B8C /* Future.swift */; };
 		AE8EA96E199B957D000D4B8C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EA96B199B957D000D4B8C /* Failable.swift */; };
@@ -18,11 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE234F09199CB0B2008287FD /* Future_onComplete_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_onComplete_Tests.swift; sourceTree = "<group>"; };
+		AE234F0C199CB14A008287FD /* Future_onSuccess_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_onSuccess_Tests.swift; sourceTree = "<group>"; };
+		AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_onFailure_Tests.swift; sourceTree = "<group>"; };
+		AE234F12199CB1C6008287FD /* Future_map_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future_map_Tests.swift; sourceTree = "<group>"; };
 		AE3C0082199B9B2000DAC808 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE8EA921199B93B1000D4B8C /* KSPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA92C199B93B1000D4B8C /* KSPromise_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSPromise_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA92F199B93B1000D4B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSPromise_Tests.swift; sourceTree = "<group>"; };
 		AE8EA93F199B93BA000D4B8C /* KSPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA949199B93BB000D4B8C /* KSPromise_OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSPromise_OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8EA965199B9465000D4B8C /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
@@ -94,8 +103,11 @@
 		AE8EA92D199B93B1000D4B8C /* KSPromise_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				AE8EA930199B93B1000D4B8C /* KSPromise_Tests.swift */,
 				AE8EA92E199B93B1000D4B8C /* Supporting Files */,
+				AE234F09199CB0B2008287FD /* Future_onComplete_Tests.swift */,
+				AE234F0C199CB14A008287FD /* Future_onSuccess_Tests.swift */,
+				AE234F0F199CB189008287FD /* Future_onFailure_Tests.swift */,
+				AE234F12199CB1C6008287FD /* Future_map_Tests.swift */,
 			);
 			path = KSPromise_Tests;
 			sourceTree = "<group>";
@@ -299,7 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE8EA931199B93B1000D4B8C /* KSPromise_Tests.swift in Sources */,
+				AE234F10199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
+				AE234F0A199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
+				AE234F0D199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
+				AE234F13199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +332,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3C0080199B99A500DAC808 /* KSPromise_Tests.swift in Sources */,
+				AE234F11199CB189008287FD /* Future_onFailure_Tests.swift in Sources */,
+				AE234F0B199CB0B2008287FD /* Future_onComplete_Tests.swift in Sources */,
+				AE234F0E199CB14A008287FD /* Future_onSuccess_Tests.swift in Sources */,
+				AE234F14199CB1C6008287FD /* Future_map_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
