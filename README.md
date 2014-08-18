@@ -74,7 +74,7 @@ mappedFuture.onSuccess() { (value) in
 ```
 
 ```swift
-let mappedFuture = future.flatMap() { (v) -> Try<String> in
+let mappedFuture = future.flatMap() { (v) -> Future<String> in
     let future = anotherAsyncCall(v)
     return future
 }
