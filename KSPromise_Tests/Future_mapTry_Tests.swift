@@ -62,7 +62,7 @@ class Future_mapTry_Tests: XCTestCase {
         
         mappedFuture.onFailure() { (v) in
             done = true
-            XCTAssertEqual("Error After: A", v.domain!, "value passed to failure is incorrect")
+            XCTAssertEqual("Error After: A", v.domain, "value passed to failure is incorrect")
         }
         
         promise.resolve("A");
@@ -78,7 +78,7 @@ class Future_mapTry_Tests: XCTestCase {
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
             case .Failure(let e):
-                let myError = NSError(domain: "Nested Error: " + e.domain!, code: 123, userInfo: nil)
+                let myError = NSError(domain: "Nested Error: " + e.domain, code: 123, userInfo: nil)
                 return Try<String>(myError)
             default:
                 return v
@@ -87,7 +87,7 @@ class Future_mapTry_Tests: XCTestCase {
         
         mappedFuture.onFailure() { (v) in
             done = true
-            XCTAssertEqual("Nested Error: Error", v.domain!, "value passed to failure is incorrect")
+            XCTAssertEqual("Nested Error: Error", v.domain, "value passed to failure is incorrect")
         }
         
         XCTAssert(done, "callback not called")

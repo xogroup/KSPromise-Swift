@@ -47,7 +47,7 @@ class Future_map_Tests: XCTestCase {
         
         mappedFuture.onFailure() { (error) in
             done = true
-            XCTAssertEqual("Error After: A", error.domain!, "value passed to failure is incorrect")
+            XCTAssertEqual("Error After: A", error.domain, "value passed to failure is incorrect")
         }
         
         promise.resolve("A");
@@ -67,7 +67,7 @@ class Future_map_Tests: XCTestCase {
         
         mappedFuture.onFailure() { (error) in
             done = true
-            XCTAssertEqual("Error", error.domain!, "value passed to failure is incorrect")
+            XCTAssertEqual("Error", error.domain, "value passed to failure is incorrect")
         }
         
         XCTAssert(done, "callback not called")
