@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F827509CF9255A958E64D0497525617A0931DF9B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "071DA5BB1F5A0268C94586D99E4EDE6FE24419CE" : 0,
+    "F827509CF9255A958E64D0497525617A0931DF9B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0796FB7B-D1E5-488B-AA1F-D18E8985CCCD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "071DA5BB1F5A0268C94586D99E4EDE6FE24419CE" : "SwiftLib",
+    "F827509CF9255A958E64D0497525617A0931DF9B" : "KSPromise-Swift"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KSPromise",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KSPromise.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/owensd\/SwiftLib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "071DA5BB1F5A0268C94586D99E4EDE6FE24419CE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:kseebaldt\/KSPromise-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F827509CF9255A958E64D0497525617A0931DF9B"
+    }
+  ]
+}

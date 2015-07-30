@@ -12,7 +12,7 @@ public class Future<T> {
     internal init() { }
     
     public convenience init(f: () -> Try<T>) {
-        self.init(queue: NSOperationQueue.mainQueue(), f)
+        self.init(queue: NSOperationQueue.mainQueue(), f: f)
     }
     
     public init(queue: NSOperationQueue, f: () -> Try<T>) {
@@ -93,7 +93,7 @@ public class Future<T> {
         let future = Future<U>()
         
         onComplete() { (v) in
-            let newFuture = self.buildFlatMapFuture(v, transform)
+            let newFuture = self.buildFlatMapFuture(v, transform: transform)
             newFuture.onComplete() { (v) in
                 future.complete(v)
             }
