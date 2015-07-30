@@ -10,8 +10,8 @@ class Future_mapTry_Tests: XCTestCase {
         
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
-                return Try<String>(wrapper.value + "B")
+            case .Success(let value):
+                return Try<String>(value + "B")
             default:
                 return v
             }
@@ -30,8 +30,8 @@ class Future_mapTry_Tests: XCTestCase {
         
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
-                return Try<String>(wrapper.value + "B")
+            case .Success(let value):
+                return Try<String>(value + "B")
             default:
                 return v
             }
@@ -52,8 +52,8 @@ class Future_mapTry_Tests: XCTestCase {
         
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
-                let myError = NSError(domain: "Error After: " + wrapper.value, code: 123, userInfo: nil)
+            case .Success(let value):
+                let myError = NSError(domain: "Error After: " + value, code: 123, userInfo: nil)
                 return Try<String>(myError)
             default:
                 return v

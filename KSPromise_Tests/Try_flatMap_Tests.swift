@@ -11,8 +11,8 @@ class Try_flatMap_Tests: XCTestCase {
         }
         
         switch(result) {
-        case .Success(let wrapper):
-            XCTAssertEqual(wrapper.value, "AB", "value was not mapped")
+        case .Success(let value):
+            XCTAssertEqual(value, "AB", "value was not mapped")
         case .Failure:
             XCTFail("Should not error")
         }

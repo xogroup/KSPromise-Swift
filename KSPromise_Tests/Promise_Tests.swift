@@ -10,8 +10,8 @@ class Promise_Tests: XCTestCase {
         
         if let value = promise.future.value {
             switch value {
-            case .Success(let wrapper):
-                XCTAssertEqual(wrapper.value, "A", "value should not have updated")
+            case .Success(let value):
+                XCTAssertEqual(value, "A", "value should not have updated")
             case .Failure:
                 XCTFail("should not have failed")
             }
