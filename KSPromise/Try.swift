@@ -2,13 +2,13 @@ import Foundation
 
 public enum Try<T> {
     case Success(T)
-    case Failure(NSError)
+    case Failure(ErrorType)
 
     public init(_ value: T) {
         self = .Success(value)
     }
 
-    public init(_ error: NSError) {
+    public init(_ error: ErrorType) {
         self = .Failure(error)
     }
 

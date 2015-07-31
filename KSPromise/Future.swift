@@ -2,12 +2,12 @@ import Foundation
 
 public class Future<T> {
     
-    var _value: Try<T>?
+    var _value: T?
     var _isCompleted = false
     
     var successCallbacks: Array<T -> Void> = []
-    var failureCallbacks: Array<NSError -> Void> = []
-    var completeCallbacks: Array<Try<T> -> Void> = []
+    var failureCallbacks: Array<ErrorType -> Void> = []
+    var completeCallbacks: Array<T -> Void> = []
     
     internal init() { }
     
@@ -21,7 +21,7 @@ public class Future<T> {
         }
     }
     
-    public var value: Try<T>? {
+    public var value: T? {
         get {
             return _value
         }
@@ -33,7 +33,7 @@ public class Future<T> {
         }
     }
     
-    public func onComplete(callback: (Try<T>) -> Void) {
+    public func onComplete(callback: (T) -> Void) {
         if isCompleted {
             callback(value!)
         } else {
@@ -56,7 +56,7 @@ public class Future<T> {
         }
     }
     
-    public func onFailure(callback: (NSError) -> Void) {
+    public func onFailure(callback: (ErrorType) -> Void) {
         if isCompleted {
             if let v = value {
                 switch(v) {
@@ -71,22 +71,19 @@ public class Future<T> {
         }
     }
     
-    public func map<U>(transform: (T) -> Try<U>) -> Future<U> {
+    public func map<U>(transform: (T) throws -> U) -> Future<U> {
         let future = Future<U>()
         
         onComplete() { (v) in
-            future.complete(v.flatMap(transform))
+            do {
+                let mappedValue = try transform(v)
+                future.complete(Try(mappedValue))
+            } catch {
+                future.complete(Try(error))
+            }
+            
         }
         return future
-    }
-    
-    public func mapTry<U>(transform: (Try<T>) -> Try<U>) -> Future<U> {
-        let promise = Future<U>()
-        
-        onComplete({ (v: Try<T>) -> Void in
-            promise.complete(transform(v))
-        })
-        return promise
     }
     
     public func flatMap<U>(transform: (T) -> Future<U>) -> Future<U> {
@@ -96,18 +93,6 @@ public class Future<T> {
             let newFuture = self.buildFlatMapFuture(v, transform: transform)
             newFuture.onComplete() { (v) in
                 future.complete(v)
-            }
-        }
-        return future
-    }
-    
-    public func flatMapTry<U>(transform: (Try<T>) -> Future<U>) -> Future<U> {
-        let future = Future<U>()
-        
-        onComplete() { (v1) in
-            let newFuture = transform(v1)
-            newFuture.onComplete() { (v2) in
-                future.complete(v2)
             }
         }
         return future

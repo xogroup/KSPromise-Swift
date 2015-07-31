@@ -9,7 +9,7 @@ public class Promise<T> {
         future.complete(Try<T>(value))
     }
     
-    public func reject(error: NSError) {
+    public func reject(error: ErrorType) {
         future.complete(Try<T>(error))
     }
 }

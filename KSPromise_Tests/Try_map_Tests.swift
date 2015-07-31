@@ -29,8 +29,10 @@ class Try_map_Tests: XCTestCase {
         switch(result) {
         case .Success:
             XCTFail("Should not error")
-        case .Failure(let e):
+        case .Failure(let e as NSError):
             XCTAssertEqual(e, error, "error does not match")
+        default:
+            XCTFail("whatever");
         }
     }
 
