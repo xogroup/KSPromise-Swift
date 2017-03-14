@@ -1,5 +1,5 @@
 import XCTest
-import KSPromise
+@testable import KSPromise
 
 class Future_mapTry_Tests: XCTestCase {
     let promise = Promise<String>()
@@ -10,7 +10,7 @@ class Future_mapTry_Tests: XCTestCase {
 
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
+            case .success(let wrapper):
                 return Try<String>(wrapper.value + "B")
             default:
                 return v
@@ -30,7 +30,7 @@ class Future_mapTry_Tests: XCTestCase {
 
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
+            case .success(let wrapper):
                 return Try<String>(wrapper.value + "B")
             default:
                 return v
@@ -52,7 +52,7 @@ class Future_mapTry_Tests: XCTestCase {
 
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Success(let wrapper):
+            case .success(let wrapper):
                 let myError = NSError(domain: "Error After: " + wrapper.value, code: 123, userInfo: nil)
                 return Try<String>(myError)
             default:
@@ -77,7 +77,7 @@ class Future_mapTry_Tests: XCTestCase {
 
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch (v) {
-            case .Failure(let e):
+            case .failure(let e):
                 let myError = NSError(domain: "Nested Error: " + e.domain, code: 123, userInfo: nil)
                 return Try<String>(myError)
             default:
@@ -100,7 +100,7 @@ class Future_mapTry_Tests: XCTestCase {
 
         let mappedFuture = promise.future.mapTry() { (v) -> Try<String> in
             switch(v) {
-            case .Failure(let e):
+            case .failure(let e):
                 let value = "Recovered From: " + e.domain
                 return Try<String>(value)
             default:

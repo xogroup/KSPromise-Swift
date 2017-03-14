@@ -12,7 +12,7 @@ class Future_onComplete_Tests: XCTestCase {
         promise.future.onComplete() { (v) in
             done = true
             switch (v) {
-            case .Success(let wrapper):
+            case .success(let wrapper):
                 XCTAssertEqual("A", wrapper.value, "value passed to success is incorrect")
             default:
                 XCTFail("should not have failed")
@@ -28,7 +28,7 @@ class Future_onComplete_Tests: XCTestCase {
         promise.future.onComplete() { (v) in
             done = true
             switch (v) {
-            case .Success(let wrapper):
+            case .success(let wrapper):
                 XCTAssertEqual("A", wrapper.value, "value passed to success is incorrect")
             default:
                 XCTFail("should not have failed")
@@ -49,7 +49,7 @@ class Future_onComplete_Tests: XCTestCase {
         promise.future.onComplete() { (v) in
             done = true
             switch (v) {
-            case .Failure(let e):
+            case .failure(let e):
                 XCTAssertEqual(error, e, "error passed to failure is incorrect")
             default:
                 XCTFail("should not have succeeded")
@@ -67,7 +67,7 @@ class Future_onComplete_Tests: XCTestCase {
             done = true
 
             switch(v) {
-            case .Failure(let e):
+            case .failure(let e):
                 XCTAssertEqual(error, e, "error passed to failure is incorrect")
             default:
                 XCTFail("should not have succeeded")

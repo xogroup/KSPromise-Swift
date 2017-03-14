@@ -11,9 +11,9 @@ class Try_flatMap_Tests: XCTestCase {
         }
 
         switch(result) {
-        case .Success(let wrapper):
+        case .success(let wrapper):
             XCTAssertEqual(wrapper.value, "AB", "value was not mapped")
-        case .Failure:
+        case .failure:
             XCTFail("Should not error")
         }
     }
@@ -27,9 +27,9 @@ class Try_flatMap_Tests: XCTestCase {
         }
 
         switch(result) {
-        case .Success:
+        case .success:
             XCTFail("Should not succeed")
-        case .Failure(let e):
+        case .failure(let e):
             XCTAssertEqual(e, error, "error does not match")
         }
     }
@@ -43,9 +43,9 @@ class Try_flatMap_Tests: XCTestCase {
         }
 
         switch(result) {
-        case .Success:
+        case .success:
             XCTFail("Should not succeed")
-        case .Failure(let e):
+        case .failure(let e):
             XCTAssertEqual(e, error, "error does not match")
         }
     }
@@ -60,9 +60,9 @@ class Try_flatMap_Tests: XCTestCase {
         }
 
         switch(result) {
-        case .Success:
+        case .success:
             XCTFail("Should not error")
-        case .Failure(let e):
+        case .failure(let e):
             XCTAssertEqual(e, error, "error does not match")
         }
     }
