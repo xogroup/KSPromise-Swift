@@ -3,33 +3,33 @@ import KSPromise
 
 class Try_map_Tests: XCTestCase {
 
-    func test_map_callsFunctionOnSuccess() {
+    func test_map_callsFunctionOnsuccess() {
         let value = Try<String>("A")
-        
+
         let result: Try<String> = value.map() { (v) in
             return v + "B"
         }
-        
+
         switch(result) {
-        case .Success(let wrapper):
+        case .success(let wrapper):
             XCTAssertEqual(wrapper.value, "AB", "value was not mapped")
-        case .Failure:
+        case .failure:
             XCTFail("Should not error")
         }
     }
-    
-    func test_map_passesThroughErrorOnFailure() {
+
+    func test_map_passesThroughErrorOnfailure() {
         let error = NSError(domain: "Error", code: 123, userInfo: nil)
         let value = Try<String>(error)
-        
+
         let result: Try<String> = value.map() { (v) in
             return v + "B"
         }
-        
+
         switch(result) {
-        case .Success:
+        case .success:
             XCTFail("Should not error")
-        case .Failure(let e):
+        case .failure(let e):
             XCTAssertEqual(e, error, "error does not match")
         }
     }

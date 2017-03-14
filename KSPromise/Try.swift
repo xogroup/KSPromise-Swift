@@ -1,37 +1,37 @@
 import Foundation
 
 public enum Try<T> {
-    case Success(TryValueWrapper<T>)
-    case Failure(NSError)
+    case success(TryValueWrapper<T>)
+    case failure(NSError)
 
     public init(_ value: T) {
-        self = .Success(TryValueWrapper(value))
+        self = .success(TryValueWrapper(value))
     }
 
     public init(_ error: NSError) {
-        self = .Failure(error)
+        self = .failure(error)
     }
 
-    public func map<U>(f: T -> U) -> Try<U> {
+    public func map<U>(_ f: (T) -> U) -> Try<U> {
         switch self {
-        case Success(let wrapper):
-            return .Success(TryValueWrapper(f(wrapper.value)))
-        case Failure(let error):
-            return .Failure(error)
+        case .success(let wrapper):
+            return .success(TryValueWrapper(f(wrapper.value)))
+        case .failure(let error):
+            return .failure(error)
         }
     }
 
-    public func flatMap<U>(f:T -> Try<U>) -> Try<U> {
+    public func flatMap<U>(_ f:(T) -> Try<U>) -> Try<U> {
         switch self {
-        case Success(let wrapper):
+        case .success(let wrapper):
             return f(wrapper.value)
-        case Failure(let error):
-            return .Failure(error)
+        case .failure(let error):
+            return .failure(error)
         }
     }
 }
 
-public class TryValueWrapper<T> {
-    public let value: T
+open class TryValueWrapper<T> {
+    open let value: T
     public init(_ value: T) { self.value = value }
 }

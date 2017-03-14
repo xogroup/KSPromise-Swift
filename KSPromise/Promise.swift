@@ -1,15 +1,15 @@
 import Foundation
 
-public class Promise<T> {
-    public let future: Future<T> = Future()
-    
+open class Promise<T> {
+    open let future: Future<T> = Future()
+
     public init() { }
-    
-    public func resolve(value: T) {
+
+    open func resolve(_ value: T) {
         future.complete(Try<T>(value))
     }
-    
-    public func reject(error: NSError) {
+
+    open func reject(_ error: NSError) {
         future.complete(Try<T>(error))
     }
 }
