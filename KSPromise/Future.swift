@@ -45,8 +45,8 @@ open class Future<T> {
         if isCompleted {
             if let v = value {
                 switch(v) {
-                case .success(let wrapper):
-                    callback(wrapper.value)
+                case .success(let value):
+                    callback(value)
                 default:
                     break;
                 }
@@ -121,9 +121,9 @@ open class Future<T> {
         _isCompleted = true
         _value = value
         switch (value) {
-        case .success(let wrapper):
+        case .success(let value):
             for callback in successCallbacks {
-                callback(wrapper.value)
+                callback(value)
             }
         case .failure(let error):
             for callback in failureCallbacks {
@@ -140,8 +140,8 @@ open class Future<T> {
 
     fileprivate func buildFlatMapFuture<U>(_ v: Try<T>, transform: (T) -> Future<U>) -> Future<U> {
         switch v {
-        case .success(let wrapper):
-            return transform(wrapper.value)
+        case .success(let value):
+            return transform(value)
         case .failure(let error):
             let newFuture = Future<U>()
             newFuture.complete(Try(error))
