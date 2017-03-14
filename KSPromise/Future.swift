@@ -71,6 +71,13 @@ open class Future<T> {
         }
     }
 
+    open func cancel() {
+        successCallbacks = []
+        failureCallbacks = []
+        completeCallbacks = []
+        complete(.failure(NSError(domain: "Cancelled", code: 0, userInfo: nil)))
+    }
+
     open func map<U>(_ transform: @escaping (T) -> Try<U>) -> Future<U> {
         let future = Future<U>()
 
@@ -111,6 +118,28 @@ open class Future<T> {
             }
         }
         return future
+    }
+
+    open class func when(_ futures: [Future<T>]) -> Future<[Any]> {
+        let group = DispatchGroup()
+        let lock = DispatchQueue(label: "futures queue for resolution checking", attributes: [])
+
+        let promise = Promise<[Any]>()
+        let futuresCheck = {
+            let values = futures.flatMap { (future: Future<T>) -> Any? in
+                guard let value = future.value else { return .none }
+                switch value {
+                case .success(let value): return value
+                case .failure(let error): return error
+                }
+            }
+            guard values.count == futures.count else { return }
+            DispatchQueue.main.async(execute: { promise.resolve(values) })
+        }
+        for future in futures {
+            future.onComplete { _ in lock.async(group: group) { futuresCheck() } }
+        }
+        return promise.future
     }
 
     internal func complete(_ value: Try<T>) {
