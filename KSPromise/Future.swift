@@ -1,39 +1,39 @@
 import Foundation
 
-public class Future<T> {
+open class Future<T> {
     
     var _value: Try<T>?
     var _isCompleted = false
     
-    var successCallbacks: Array<T -> Void> = []
-    var failureCallbacks: Array<NSError -> Void> = []
-    var completeCallbacks: Array<Try<T> -> Void> = []
+    var successCallbacks: Array<(T) -> Void> = []
+    var failureCallbacks: Array<(NSError) -> Void> = []
+    var completeCallbacks: Array<(Try<T>) -> Void> = []
     
     internal init() { }
     
-    public convenience init(f: () -> Try<T>) {
-        self.init(queue: NSOperationQueue.mainQueue(), f)
+    public convenience init(f: @escaping () -> Try<T>) {
+        self.init(queue: OperationQueue.main, f: f)
     }
     
-    public init(queue: NSOperationQueue, f: () -> Try<T>) {
-        queue.addOperationWithBlock() {
+    public init(queue: OperationQueue, f: @escaping () -> Try<T>) {
+        queue.addOperation() {
             self.complete(f())
         }
     }
     
-    public var value: Try<T>? {
+    open var value: Try<T>? {
         get {
             return _value
         }
     }
     
-    public var isCompleted: Bool {
+    open var isCompleted: Bool {
         get {
             return _isCompleted
         }
     }
     
-    public func onComplete(callback: (Try<T>) -> Void) {
+    open func onComplete(_ callback: @escaping (Try<T>) -> Void) {
         if isCompleted {
             callback(value!)
         } else {
@@ -41,11 +41,11 @@ public class Future<T> {
         }
     }
     
-    public func onSuccess(callback: (T) -> Void) {
+    open func onSuccess(_ callback: @escaping (T) -> Void) {
         if isCompleted {
             if let v = value {
                 switch(v) {
-                case .Success(let wrapper):
+                case .success(let wrapper):
                     callback(wrapper.value)
                 default:
                     break;
@@ -56,11 +56,11 @@ public class Future<T> {
         }
     }
     
-    public func onFailure(callback: (NSError) -> Void) {
+    open func onFailure(_ callback: @escaping (NSError) -> Void) {
         if isCompleted {
             if let v = value {
                 switch(v) {
-                case .Failure(let error):
+                case .failure(let error):
                     callback(error)
                 default:
                     break;
@@ -71,7 +71,7 @@ public class Future<T> {
         }
     }
     
-    public func map<U>(transform: (T) -> Try<U>) -> Future<U> {
+    open func map<U>(_ transform: @escaping (T) -> Try<U>) -> Future<U> {
         let future = Future<U>()
         
         onComplete() { (v) in
@@ -80,7 +80,7 @@ public class Future<T> {
         return future
     }
     
-    public func mapTry<U>(transform: (Try<T>) -> Try<U>) -> Future<U> {
+    open func mapTry<U>(_ transform: @escaping (Try<T>) -> Try<U>) -> Future<U> {
         let promise = Future<U>()
         
         onComplete({ (v: Try<T>) -> Void in
@@ -89,11 +89,11 @@ public class Future<T> {
         return promise
     }
     
-    public func flatMap<U>(transform: (T) -> Future<U>) -> Future<U> {
+    open func flatMap<U>(_ transform: @escaping (T) -> Future<U>) -> Future<U> {
         let future = Future<U>()
         
         onComplete() { (v) in
-            let newFuture = self.buildFlatMapFuture(v, transform)
+            let newFuture = self.buildFlatMapFuture(v, transform: transform)
             newFuture.onComplete() { (v) in
                 future.complete(v)
             }
@@ -101,7 +101,7 @@ public class Future<T> {
         return future
     }
     
-    public func flatMapTry<U>(transform: (Try<T>) -> Future<U>) -> Future<U> {
+    open func flatMapTry<U>(_ transform: @escaping (Try<T>) -> Future<U>) -> Future<U> {
         let future = Future<U>()
         
         onComplete() { (v1) in
@@ -113,7 +113,7 @@ public class Future<T> {
         return future
     }
     
-    internal func complete(value: Try<T>) {
+    internal func complete(_ value: Try<T>) {
         if isCompleted {
             return
         }
@@ -121,11 +121,11 @@ public class Future<T> {
         _isCompleted = true
         _value = value
         switch (value) {
-        case .Success(let wrapper):
+        case .success(let wrapper):
             for callback in successCallbacks {
                 callback(wrapper.value)
             }
-        case .Failure(let error):
+        case .failure(let error):
             for callback in failureCallbacks {
                 callback(error)
             }
@@ -133,16 +133,16 @@ public class Future<T> {
         for callback in completeCallbacks {
             callback(self.value!)
         }
-        successCallbacks.removeAll(keepCapacity: false)
-        failureCallbacks.removeAll(keepCapacity: false)
-        completeCallbacks.removeAll(keepCapacity: false)
+        successCallbacks.removeAll(keepingCapacity: false)
+        failureCallbacks.removeAll(keepingCapacity: false)
+        completeCallbacks.removeAll(keepingCapacity: false)
     }
     
-    private func buildFlatMapFuture<U>(v: Try<T>, transform: (T) -> Future<U>) -> Future<U> {
+    fileprivate func buildFlatMapFuture<U>(_ v: Try<T>, transform: (T) -> Future<U>) -> Future<U> {
         switch v {
-        case .Success(let wrapper):
+        case .success(let wrapper):
             return transform(wrapper.value)
-        case .Failure(let error):
+        case .failure(let error):
             let newFuture = Future<U>()
             newFuture.complete(Try(error))
             return newFuture
