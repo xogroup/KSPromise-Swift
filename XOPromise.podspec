@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.author       = "Kurtis Seebaldt"
   s.ios.deployment_target = "8.0"
   s.source       = { :git => "https://github.com/xogroup/XOPromise.git", :tag => "#{s.version}" }
-  s.source_files  = "XOPromise", "Classes/**/*.{h,swift}"
+  s.source_files  = "XOPromise", "XOPromise/**/*.{h,swift}"
 end
