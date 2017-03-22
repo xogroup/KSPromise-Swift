@@ -1,5 +1,5 @@
 import XCTest
-@testable import KSPromise
+@testable import XOPromise
 
 class Future_mapTry_Tests: XCTestCase {
     let promise = Promise<String>()

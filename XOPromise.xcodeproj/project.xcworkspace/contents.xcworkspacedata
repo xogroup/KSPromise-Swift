@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KSPromise.xcodeproj">
+      location = "self:/Users/sambae/XO/KSPromise-Swift/XOPromise.xcodeproj">
    </FileRef>
 </Workspace>

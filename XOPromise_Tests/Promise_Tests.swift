@@ -1,5 +1,5 @@
 import XCTest
-import KSPromise
+import XOPromise
 
 class Promise_Tests: XCTestCase {
     let promise = Promise<String>()
