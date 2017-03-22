@@ -1,5 +1,5 @@
 import XCTest
-import KSPromise
+import XOPromise
 
 class Future_async_Tests: XCTestCase {
     func test_future_resolvesAFutureFromTheBlock() {

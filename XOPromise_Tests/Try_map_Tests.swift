@@ -1,5 +1,5 @@
 import XCTest
-import KSPromise
+import XOPromise
 
 class Try_map_Tests: XCTestCase {
 
