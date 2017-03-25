@@ -11,6 +11,18 @@ open class Future<T> {
 
     internal init() { }
 
+    static func completed(with value: T) -> Future<T> {
+        let future = Future<T>()
+        future.complete(Try<T>(value))
+        return future
+    }
+
+    static func rejected(with error: NSError) -> Future<T> {
+        let future = Future<T>()
+        future.complete(Try<T>(error))
+        return future
+    }
+
     public convenience init(f: @escaping () -> Try<T>) {
         self.init(queue: OperationQueue.main, f: f)
     }
